@@ -29,7 +29,9 @@ export const appReducer = (state = initialState, action) => {
         case REMOVE_ITEM:
             return {
               ...state,
-              car: {...state.car, features: state.car.features.filter(car => car.id !== action.payload.id)}
+              car: {...state.car, features: state.car.features.filter(car => car.id != action.payload.id)},
+              additionalFeatures: [...state.additionalFeatures, action.payload],
+              additionalPrice: (state.additionalPrice - action.payload.price)
             };
             default: 
                 return state;
