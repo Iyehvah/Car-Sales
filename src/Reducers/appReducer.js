@@ -21,17 +21,16 @@ export const appReducer = (state = initialState, action) => {
         switch (action.type) {
         case ADD_ITEM:
             return {
-                ...state,
-                additionalPrice: (state.additionalPrice+action.payload.price),
-                car: {...state.car, features: [...state.car.features, action.payload]},
-                store: state.store.filter(item => (item.id !== action.payload.id))
-            }
+              ...state,
+              additionalPrice: state.additionalPrice + action.payload.price,
+              car: {...state.car, features: [...state.car.features, action.payload]},
+              additionalFeatures: state.additionalFeatures.filter( features => features.name !== action.payload.name)
+            };
         case REMOVE_ITEM:
             return {
-                ...state,
-                additionalPrice: (state.additionalPrice - action.payload.price),
-                car: { ...state.car, features: state.car.features.filter(item => !(item.id === action.payload.id)) }
-            }
+              ...state,
+              car: {...state.car, features: state.car.features.filter(car => car.id !== action.payload.id)}
+            };
             default: 
                 return state;
     }

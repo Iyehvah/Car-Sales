@@ -1,10 +1,9 @@
 import React from 'react';
 import AdditionalFeature from './AdditionalFeature';
-import { connect } from 'react-redux';
-import { addItem } from '../Actions/actions';
+
 
 const AdditionalFeatures = props => {
-  // console.log(props.store);
+
   return (
     <div className="content">
       <h4>Additional Features</h4>
@@ -21,8 +20,4 @@ const AdditionalFeatures = props => {
   );
 };
 
-
-export default connect((state => {
-  return state
-}))(AdditionalFeatures);
-
+export default AdditionalFeatures;
